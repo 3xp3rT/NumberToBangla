@@ -1,4 +1,6 @@
-.Net package to convert English numbers to Bangla number or Bangla text, Bangla month name and Bangla Money Format for Laravel 5.5+. Maximum possible number to covert in Bangla word is 999999999999999
+.Net package to convert English numbers to Bangla number or Bangla text, Bangla month name and Bangla Money Format for .Net Core. 
+Maximum possible number to covert in Bangla word is 999999999999999
+
 Example,
 | Operation | English Input | Bangla Output |
 | --- | --- | --- |
@@ -12,9 +14,9 @@ Example,
 
 ## Installation
 
-Install the package through [Composer](http://getcomposer.org).
+Install the package Nuget Package Manager.
 On the command line:
 
 ```
-composer require 3xp3rT/NumberToBangla
+dotnet add package NumberToBangla --version 1.0.1
 ```
