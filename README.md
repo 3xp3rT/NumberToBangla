@@ -1,5 +1,5 @@
-# .Net package to get English number to (Bangla digits or Bangla word), Bangla month name ,Bangla dayname, Bangla money in (word or digits or comma-separate) for .Net Core. 
-# Maximum possible number to covert in Bangla word is 999999999999999
+.Net package to get English number to (Bangla digits or Bangla word), Bangla month name ,Bangla dayname, Bangla money in (word or digits or comma-separate) for .Net Core. 
+ Maximum possible number to covert in Bangla word is 999999999999999
 
 ## Example,
 | Function |  Input |  Output |
