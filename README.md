@@ -18,5 +18,5 @@ Install the package Nuget Package Manager.
 On the command line:
 
 ```
-dotnet add package NumberToBangla --version 1.0.1
+dotnet add package NumberToBangla --version 1.0.2
 ```
