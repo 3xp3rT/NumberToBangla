@@ -113,11 +113,11 @@ namespace NumberToBangla
 
 
         /// <summary>
-        /// This function takes one float money and returns their bangla money in word.
+        /// This function takes double money and returns their bangla money in word.
         /// </summary>
         /// <param name="number">Any float number (money)</param>
         /// <returns>The bangla money word</returns>
-        public static string ConvertNumberToTakaInWord(double number)
+        public static string GetTakaInWord(double number)
         {
             IsValid(number);
 
@@ -130,31 +130,31 @@ namespace NumberToBangla
                 return ConvertFloatNumberToMoneyFormat(number);
             }
 
-            return BanglaWord((int)number) + " টাকা ";
+            return GetBanglaWord((int)number) + " টাকা ";
         }
 
 
         /// <summary>
-        /// This function takes one string number and returns their bangla comma with lakh in word.
+        /// This function takes number and returns their bangla word with commaseparate .
         /// </summary>
-        /// <param name="number">Any  number in string</param>
-        /// <returns>The bangla ammount with comma in lakh </returns>
-        public static string BanglaCommaLakh(double number)
+        /// <param name="number">Any  number</param>
+        /// <returns name="commaseparateString">The bangla ammount with comma</returns>
+        public static string GetCommaSeparateBanglaDigit(double number)
         {
-           IsValid(number);
-
-            string n = Regex.Replace(number.ToString(), @"(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?", "$1,", RegexOptions.IgnoreCase);
-            return BanglaNumber(float.Parse(n));
+            IsValid(number);
+            string banglaDigits = GetBanglaDigits(number);
+            string commaseparateString = Regex.Replace(banglaDigits, @"(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?", "$1,");
+            return commaseparateString;
         }
 
 
 
         /// <summary>
-        /// This function takes one string number and returns their bangla number.
+        /// This function takes number and returns their bangla digit.
         /// </summary>
-        /// <param name="number">Any  number in string</param>
-        /// <returns>The bangla number</returns>
-        public static string BanglaNumber(float number)
+        /// <param name="number">Any  number</param>
+        /// <returns>The bangla digit</returns>
+        public static string GetBanglaDigits(double number)
         {
             IsValid(number);
             Dictionary<char, char> numbers = new Dictionary<char, char>()
@@ -186,11 +186,11 @@ namespace NumberToBangla
 
 
         /// <summary>
-        /// This function takes one float number and returns their bangla in word.
+        /// This function takes number and returns their bangla in word.
         /// </summary>
-        /// <param name="number">Any  number in float</param>
+        /// <param name="number">Any  number</param>
         /// <returns>The bangla word</returns>
-        public static string BanglaWord(double number)
+        public static string GetBanglaWord(double number)
         {
             IsValid(number);
 
@@ -225,7 +225,7 @@ namespace NumberToBangla
             {
                 if (crore > 99)
                 {
-                    text += BanglaWord(crore) + " কোটি ";
+                    text += GetBanglaWord(crore) + " কোটি ";
                 }
                 else
                 {
@@ -278,10 +278,10 @@ namespace NumberToBangla
         {
             string money = number.ToString("0.00", CultureInfo.InvariantCulture);
             string[] decimalPart = money.Split('.');
-            string text = BanglaWord(double.Parse(decimalPart[0])) + " টাকা ";
+            string text = GetBanglaWord(double.Parse(decimalPart[0])) + " টাকা ";
             if (decimalPart.Length > 1)
             {
-                text += BanglaWord(double.Parse(decimalPart[1])) + " পয়সা";
+                text += GetBanglaWord(double.Parse(decimalPart[1])) + " পয়সা";
             }
 
             return text;
@@ -289,12 +289,12 @@ namespace NumberToBangla
 
 
         /// <summary>
-        /// Convert number into English Month Name
+        /// Get Bangla month name
         /// </summary>
-        /// <param name="number"></param>
-        /// <returns>string</returns>
+        /// <param name="monthOfYear">Day of the month (1-12)</param>
+        /// <returns>Bangla month name</returns>
         /// <exception cref="Exception"></exception>
-        public static string BanglaMonth(int number)
+        public static string GetBanglaMonthName(int monthOfYear)
         {
             Dictionary<int, string> month = new Dictionary<int, string>
             {
@@ -312,14 +312,32 @@ namespace NumberToBangla
                 {12, "ডিসেম্বর"}
             };
 
-            if (int.TryParse(number.ToString(), out int n) && n >= 1 && n <= 12)
+            if (int.TryParse(monthOfYear.ToString(), out int n) && n >= 1 && n <= 12)
             {
                 return month[n];
             }
 
-            throw new Exception("Number should be between 1 and 12");
+            throw new Exception("Month of year should be between 1 and 12");
         }
 
+
+        /// <summary>
+        /// Get Bangla day name
+        /// </summary>
+        /// <param name="dayOfWeek"> Day of the week (1-7)</param>
+        /// <returns>Bangla day name</returns>
+        /// <exception cref="Exception"></exception>
+        public static string GetBanglaDayName(int dayOfWeek)
+        {
+            string[] dayNames = { "রবিবার", "সোমবার", "মঙ্গলবার", "বুধবার", "বৃহস্পতিবার", "শুক্রবার", "শনিবার" };
+
+            if (dayOfWeek < 0 || dayOfWeek > 6)
+            {
+                throw new ArgumentOutOfRangeException("dayOfWeek", "Invalid day of week. Must be between 0 and 6.");
+            }
+
+            return dayNames[dayOfWeek];
+        }
 
         /// <summary>
         /// C# doesn't have a mixed data type, so we've used object instead.
