@@ -23,7 +23,7 @@ Function |  Input |  Output |
  GetBanglaMonthName | 12 | ডিসেম্বর |
  ```
  ```
- GetBanglaDayName | 4 | বৃহস্পতিবার |
+ GetBanglaDayName | 1 | শুক্রবার |
  ```
 
 
@@ -47,4 +47,4 @@ you get suggetion (GetBanglaWord, GetBanglaDigits, GetCommaSeparateBanglaDigit, 
     <p>@NumberToBanglaGenerator.GetBanglaWord(100099645)</p>
     <p>@NumberToBanglaGenerator.GetTakaInWord(10.89)</p>
     <p>@NumberToBanglaGenerator.GetBanglaMonthName(4)</p>
-    <p>@NumberToBanglaGenerator.GetBanglaDayName(4)</p>
+    <p>@NumberToBanglaGenerator.GetBanglaDayName(1)</p>

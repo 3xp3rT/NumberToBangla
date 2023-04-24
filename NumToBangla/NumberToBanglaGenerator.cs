@@ -329,14 +329,14 @@ namespace NumberToBangla
         /// <exception cref="Exception"></exception>
         public static string GetBanglaDayName(int dayOfWeek)
         {
-            string[] dayNames = { "রবিবার", "সোমবার", "মঙ্গলবার", "বুধবার", "বৃহস্পতিবার", "শুক্রবার", "শনিবার" };
+            string[] dayNames = { "শুক্রবার", "শনিবার" ,"রবিবার", "সোমবার", "মঙ্গলবার", "বুধবার", "বৃহস্পতিবার"};
 
             if (dayOfWeek < 0 || dayOfWeek > 6)
             {
                 throw new ArgumentOutOfRangeException("dayOfWeek", "Invalid day of week. Must be between 0 and 6.");
             }
 
-            return dayNames[dayOfWeek];
+            return dayNames[dayOfWeek-1];
         }
 
         /// <summary>
