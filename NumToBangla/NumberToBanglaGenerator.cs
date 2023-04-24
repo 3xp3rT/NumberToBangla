@@ -117,7 +117,7 @@ namespace NumberToBangla
         /// </summary>
         /// <param name="number">Any float number (money)</param>
         /// <returns>The bangla money word</returns>
-        public static string BanglaMoney(float number)
+        public static string ConvertNumberToTakaInWord(double number)
         {
             IsValid(number);
 
@@ -139,12 +139,12 @@ namespace NumberToBangla
         /// </summary>
         /// <param name="number">Any  number in string</param>
         /// <returns>The bangla ammount with comma in lakh </returns>
-        public static string BanglaCommaLakh(string number)
+        public static string BanglaCommaLakh(double number)
         {
-            IsValid(number);
+           IsValid(number);
 
-            string n = Regex.Replace(number, @"(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?", "$1,", RegexOptions.IgnoreCase);
-            return BanglaNumber(n);
+            string n = Regex.Replace(number.ToString(), @"(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?", "$1,", RegexOptions.IgnoreCase);
+            return BanglaNumber(float.Parse(n));
         }
 
 
@@ -154,11 +154,9 @@ namespace NumberToBangla
         /// </summary>
         /// <param name="number">Any  number in string</param>
         /// <returns>The bangla number</returns>
-        public static string BanglaNumber(string number)
+        public static string BanglaNumber(float number)
         {
             IsValid(number);
-
-
             Dictionary<char, char> numbers = new Dictionary<char, char>()
             {
                 {'0', '০'},
@@ -174,16 +172,12 @@ namespace NumberToBangla
             };
 
             StringBuilder sb = new StringBuilder();
-            foreach (char c in number)
+            foreach (char c in number.ToString())
             {
                 if (numbers.ContainsKey(c))
-                {
                     sb.Append(numbers[c]);
-                }
                 else
-                {
                     sb.Append(c);
-                }
             }
 
             return sb.ToString();
@@ -196,17 +190,20 @@ namespace NumberToBangla
         /// </summary>
         /// <param name="number">Any  number in float</param>
         /// <returns>The bangla word</returns>
-        public static string BanglaWord(float number)
+        public static string BanglaWord(double number)
         {
             IsValid(number);
 
             var integerPart = (int)Math.Truncate(number);
             var decimalPart = (int)((number - integerPart) * 100);
 
-            var text = ToWord(integerPart) + " দশমিক ";
+            var text = ToWord(integerPart) ;
 
             if (decimalPart > 0)
+            {
+                text = text + " দশমিক ";
                 text += ToWord(decimalPart);
+            }
 
 
             return text;
@@ -277,14 +274,14 @@ namespace NumberToBangla
         /// </summary>
         /// <param name="number">Any float number</param>
         /// <returns>The bangla word</returns>
-        protected static string ConvertFloatNumberToMoneyFormat(float number)
+        protected static string ConvertFloatNumberToMoneyFormat(double number)
         {
             string money = number.ToString("0.00", CultureInfo.InvariantCulture);
             string[] decimalPart = money.Split('.');
-            string text = (decimalPart[0]) + " টাকা ";
+            string text = BanglaWord(double.Parse(decimalPart[0])) + " টাকা ";
             if (decimalPart.Length > 1)
             {
-                text += words[int.Parse(decimalPart[1])] + " পয়সা";
+                text += BanglaWord(double.Parse(decimalPart[1])) + " পয়সা";
             }
 
             return text;
@@ -297,7 +294,7 @@ namespace NumberToBangla
         /// <param name="number"></param>
         /// <returns>string</returns>
         /// <exception cref="Exception"></exception>
-        public string BanglaMonth(int number)
+        public static string BanglaMonth(int number)
         {
             Dictionary<int, string> month = new Dictionary<int, string>
             {
