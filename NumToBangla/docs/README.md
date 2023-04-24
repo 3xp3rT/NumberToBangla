@@ -1,28 +1,28 @@
-﻿.Net package to convert English numbers to Bangla number or Bangla text, Bangla month name and Bangla Money Format for .Net, C#. 
+﻿.Net package to get English number to (Bangla digits or Bangla word), Bangla month name ,Bangla dayname, Bangla money in (word or digits or comma-separate) for .Net Core. 
 Maximum possible number to covert in Bangla word is 999999999999999
 
 Example,
-| Operation | English Input | Bangla Output |
+| Function |  Input |  Output |
 | --- | --- | --- |
-| Text (Integer) | 13459 |তেরো হাজার চার শত ঊনষাট|
-| Text (Float) | 1345.05 |এক হাজার তিন শত পঁয়তাল্লিশ দশমিক শূন্য পাঁচ|
-| Number | 1345.5 |১৩৪৫.৫|
-| Text Money Format | 1345.50 |এক হাজার তিন শত পঁয়তাল্লিশ টাকা পঞ্চাশ পয়সা|
-| Month | 12 |ডিসেম্বর|
-| Comma (Lakh) | 121212121 |১২,১২,১২,১২১|
+| GetBanglaWord | 100099645 |দশ কোটি নিরানব্বই হাজার ছয় শত পঁয়তাল্লিশ|
+| GetBanglaDigits | 1234567.84 |১২৩৪৫৬৭.৮৪|
+| GetCommaSeparateBanglaDigit | 1000000 |১০,০০,০০০|
+| GetTakaInWord | 10.89 |দশ টাকা ঊননব্বই পয়সা|
+| GetBanglaMonthName | 12 |ডিসেম্বর|
+| GetBanglaDayName | 4 |বৃহস্পতিবার|
 
 
 ## Installation
 
-Install the package Nuget Package Manager.
+Install the package with Nuget Package Manager.
+Search on Tools-> Nuget Package Manager-> Manage Nuget Package Manager for Solution-> Browse "NumberToBangla" -> NumberToBangla by Md Nakibul Islam Shaki
 On the command line:
-
 ```
-dotnet add package NumberToBangla 
+dotnet add package NumberToBangla --version 1.0.3
 ```
 
 ## How to use it?
 First add the package 
 then write  NumberToBanglaGenerator 
-add reference 
-you get suggetion (BanglaWord, BanglaNumber, BanglaCommaLakh, BanglaMoney, BanglaMonth) methods.
+then add reference 
+you get suggetion (GetBanglaWord, GetBanglaDigits, GetCommaSeparateBanglaDigit, GetTakaInWord, GetBanglaMonthName,GetBanglaDayName) functions.
