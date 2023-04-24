@@ -10,7 +10,7 @@
 	  <Company>Eninas.com</Company>
 	  <Product>NumberToBangla</Product>
 	  <Description>.Net package to convert English numbers to Bangla number or Bangla text, Bangla month name and Bangla Money Format for .Net Core. Maximum possible number to covert in Bangla word is 999999999999999</Description>
-	  <RepositoryUrl>https://github.com/3xp3rT/public-packages</RepositoryUrl>
+	  <RepositoryUrl>https://github.com/3xp3rT/NumberToBangla</RepositoryUrl>
 	  <PackageIcon>icon.png</PackageIcon>
 	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
 	  <PackageReadmeFile>README.md</PackageReadmeFile>
