@@ -16,6 +16,7 @@
 
 Install the package with Nuget Package Manager.
 Search on Tools-> Nuget Package Manager-> Manage Nuget Package Manager for Solution-> Browse "NumberToBangla" -> NumberToBangla by Md Nakibul Islam Shaki
+
 On the command line:
 ```
 dotnet add package NumberToBangla --version 1.0.4
